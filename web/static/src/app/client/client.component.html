@@ -1,0 +1,30 @@
+<h2> Clients List </h2>
+<ul >
+  <li *ngFor="let cl of clients" 
+  		(click)="onSelect(cl)"
+  		[class.selected]="cl === selectedClient">
+    <span>{{cl.id}}</span> {{cl.name}}
+  </li>
+</ul>
+
+
+<br>
+<dir *ngIf="selectedClient">
+	<h2>{{selectedClient.name | uppercase}} Details</h2>
+	<div>
+		<span>id: </span>
+		{{selectedClient.id}}
+	</div>
+	<div>
+		<span>name: </span>
+		<input [(ngModel)]="selectedClient.name" placeholder="name">
+	</div>
+	<div>
+		<span>limit: </span>
+		<input [(ngModel)]="selectedClient.limit" placeholder="0,00">
+	</div>
+	<div>
+		<span>risk: </span>
+		<input [(ngModel)]="selectedClient.risk" placeholder="A,B,C...">
+	</div>
+</dir>
